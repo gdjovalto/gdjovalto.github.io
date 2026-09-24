@@ -110,9 +110,20 @@
             decoding: "async"
           }
         });
+        var ampliacao = el("a", {
+          classe: "galeria__ampliar",
+          attrs: {
+            href: caminho(item.ficheiro),
+            target: "_blank",
+            rel: "noopener",
+            title: "Abrir fotografia em tamanho completo",
+            "aria-label": "Abrir " + (item.titulo || "fotografia") + " em tamanho completo"
+          }
+        }, [img]);
         var conteudoLegenda = [
           el("strong", { texto: item.titulo }),
-          el("span", { texto: item.valor })
+          el("span", { texto: item.valor }),
+          el("span", { classe: "galeria__instrucao", texto: "Clique na fotografia para ampliar." })
         ];
         if (item.identificacao) {
           conteudoLegenda.push(el("div", { classe: "foto-identificacao" }, [
@@ -136,7 +147,7 @@
         }
         conteudoLegenda.push(linhaMeta(item));
         var legenda = el("figcaption", {}, conteudoLegenda);
-        alvo.appendChild(el("figure", {}, [img, legenda]));
+        alvo.appendChild(el("figure", {}, [ampliacao, legenda]));
       });
     });
   }
