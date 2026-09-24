@@ -114,12 +114,40 @@
           classe: "galeria__ampliar",
           attrs: {
             href: caminho(item.ficheiro),
-            target: "_blank",
-            rel: "noopener",
             title: "Abrir fotografia em tamanho completo",
             "aria-label": "Abrir " + (item.titulo || "fotografia") + " em tamanho completo"
           }
         }, [img]);
+        var fechar = el("button", {
+          classe: "galeria__fechar",
+          texto: "Fechar",
+          attrs: { type: "button", "aria-label": "Fechar fotografia ampliada" }
+        });
+        var dialogo = el("dialog", {
+          classe: "galeria__dialogo",
+          attrs: { "aria-label": (item.titulo || "Fotografia") + " ampliada" }
+        }, [
+          fechar,
+          el("img", {
+            attrs: {
+              src: caminho(item.ficheiro),
+              alt: "Fotografia ampliada: " + (item.titulo || "equipa"),
+              width: String(item.largura || ""),
+              height: String(item.altura || "")
+            }
+          })
+        ]);
+        ampliacao.addEventListener("click", function (evento) {
+          if (typeof dialogo.showModal === "function") {
+            evento.preventDefault();
+            dialogo.showModal();
+          }
+        });
+        fechar.addEventListener("click", function () { dialogo.close(); });
+        dialogo.addEventListener("click", function (evento) {
+          if (evento.target === dialogo) { dialogo.close(); }
+        });
+        dialogo.addEventListener("close", function () { ampliacao.focus(); });
         var conteudoLegenda = [
           el("strong", { texto: item.titulo }),
           el("span", { texto: item.valor }),
@@ -147,7 +175,7 @@
         }
         conteudoLegenda.push(linhaMeta(item));
         var legenda = el("figcaption", {}, conteudoLegenda);
-        alvo.appendChild(el("figure", {}, [ampliacao, legenda]));
+        alvo.appendChild(el("figure", {}, [ampliacao, legenda, dialogo]));
       });
     });
   }

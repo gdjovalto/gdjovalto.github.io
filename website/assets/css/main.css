@@ -183,6 +183,11 @@ a:hover{color:var(--jv-vermelho-escuro)}
 .galeria figcaption{padding:.8rem;font-size:var(--jv-peq);color:var(--jv-texto-suave)}
 .galeria figcaption strong{display:block;color:var(--jv-texto);font-size:1rem}
 .galeria__instrucao{display:block;margin-top:.35rem;font-weight:700;color:var(--jv-vermelho)}
+.galeria__dialogo{width:min(96vw,1241px);max-width:none;padding:0;border:0;border-radius:var(--jv-raio);background:#111;overflow:visible}
+.galeria__dialogo::backdrop{background:rgba(0,0,0,.86);cursor:zoom-out}
+.galeria__dialogo img{display:block;width:100%;height:auto;max-height:90vh;object-fit:contain;transition:none}
+.galeria__fechar{position:absolute;z-index:1;top:.6rem;right:.6rem;padding:.55rem .8rem;border:2px solid #fff;border-radius:var(--jv-raio);background:#111;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.galeria__fechar:hover,.galeria__fechar:focus-visible{background:var(--jv-vermelho)}
 .foto-identificacao{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem;margin-top:1rem;color:var(--jv-texto)}
 .foto-identificacao h3{font-size:.95rem;margin:0 0 .35rem}
 .foto-identificacao ol{margin:0;padding-left:1.5rem}
