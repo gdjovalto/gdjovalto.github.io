@@ -1,7 +1,6 @@
 /* ==========================================================================
    Pessoas.
-   GUARDRAIL: Joaquim Lourenço e Joaquim Álvaro Sampaio Lourenço são pessoas
-   DISTINTAS e nunca devem ser fundidas num único registo.
+   Relações familiares confirmadas pelo clube.
    ========================================================================== */
 window.JOVALTO = window.JOVALTO || {};
 
@@ -9,28 +8,37 @@ window.JOVALTO.people = [
   {
     id: "p-joaquim-lourenco",
     nome: "Joaquim Lourenço",
-    valor: "Nome associado à história do clube.",
+    valor: "Pai de Joaquim Álvaro Sampaio Lourenço.",
     classe: "C",
     fonte: "Declaração do clube (registo de projeto, 2026)",
-    nota: "Pessoa distinta de Joaquim Álvaro Sampaio Lourenço. Função e período de ligação ao clube POR CONFIRMAR — não são indicados no sítio.",
-    estado: "por confirmar"
+    nota: "Relação familiar confirmada pelo clube em 2026.",
+    estado: "confirmado"
   },
   {
     id: "p-joaquim-alvaro-sampaio-lourenco",
     nome: "Joaquim Álvaro Sampaio Lourenço",
-    valor: "Nome associado à história do clube.",
+    valor: "Filho de Joaquim Lourenço e jogador do Grupo Desportivo Jovalto.",
     classe: "C",
     fonte: "Declaração do clube (registo de projeto, 2026)",
-    nota: "Pessoa distinta de Joaquim Lourenço e de Joaquim Jorge Sampaio Jacinto. NÃO é a mesma pessoa nem uma variante do nome. Consta também da lista de jogadores do clube. Função e período de ligação POR CONFIRMAR.",
-    estado: "por confirmar"
+    nota: "Relação familiar confirmada pelo clube em 2026. Consta também da lista de jogadores e da fotografia da equipa.",
+    estado: "confirmado"
+  },
+  {
+    id: "p-joaquim-jorge-sampaio-jacinto",
+    nome: "Joaquim Jorge Sampaio Jacinto",
+    valor: "Outro membro da família ligado ao Grupo Desportivo Jovalto.",
+    classe: "C",
+    fonte: "Declaração do clube (registo de projeto, 2026)",
+    nota: "Pessoa distinta de Joaquim Lourenço e de Joaquim Álvaro Sampaio Lourenço. Consta também da lista de jogadores.",
+    estado: "confirmado"
   },
   {
     id: "p-jose-cruz",
-    nome: "José Cruz",
+    nome: "José António Almeida Cruz",
     valor: "Guarda-redes e antigo jogador que mais títulos conquistou nos campeonatos populares promovidos pela AFL.",
     classe: "C",
     fonte: "albertohelder.blogspot.com/2024/01/futebol-um-emotivo-reencontro-apos-48.html",
-    nota: "Fonte jornalística (artigo de 24/01/2024): campeão pelo União Desportivo Clube, pelo 1.º de Junho-Imparcial e «ainda pelo Jovalto (Veteranos)». Não é indicada a época em que se sagrou campeão pelo Jovalto.",
+    nota: "Também conhecido como José Cruz. A fonte jornalística (artigo de 24/01/2024) refere-o como campeão pelo União Desportivo Clube, pelo 1.º de Junho-Imparcial e «ainda pelo Jovalto (Veteranos)». Consta da lista de jogadores e da fotografia da equipa.",
     estado: "confirmado"
   }
 ];

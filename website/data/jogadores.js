@@ -58,14 +58,15 @@ window.JOVALTO.jogadores = {
     "Bartolomeu Almeida",
     "Joaquim Jorge Sampaio Jacinto"
   ],
-  avisos: [
-    {
-      nome: "Joaquim Álvaro Sampaio Lourenço",
-      texto: "Pessoa distinta de Joaquim Lourenço e de Joaquim Jorge Sampaio Jacinto. Nomes semelhantes não podem ser fundidos."
-    },
-    {
-      nome: "Joaquim Jorge Sampaio Jacinto",
-      texto: "Pessoa distinta de Joaquim Lourenço e de Joaquim Álvaro Sampaio Lourenço. Partilha um apelido, não é a mesma pessoa."
-    }
-  ]
+  fotografia: {
+    "Alberto Jorge Antunes": "Topo, 1.º a contar da esquerda (guarda-redes)",
+    "Álvaro Amaral Antunes": "Em baixo, 7.º a contar da esquerda",
+    "Joaquim Álvaro Sampaio Lourenço": "Topo, 3.º a contar da esquerda",
+    "Jorge Luís Costa Silva": "Topo, 4.º a contar da esquerda",
+    "José António Almeida Cruz": "Topo, 9.º a contar da esquerda (guarda-redes; também conhecido como José Cruz)",
+    "José Manuel Fernandes Gonçalves": "Em baixo, 1.º a contar da esquerda",
+    "José Maria Seixo": "Topo, 2.º a contar da esquerda",
+    "Rogério Fernando Silva Faroia": "Topo, 8.º a contar da esquerda",
+    "Vasco Manuel Peça Leitão": "Em baixo, 3.º a contar da esquerda"
+  }
 };

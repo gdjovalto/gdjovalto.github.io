@@ -25,7 +25,7 @@ window.JOVALTO.gallery = [
         "Não identificado",
         "Não identificado",
         "Rogério Fernando Silva Faroia",
-        "José António Almeida Cruz (guarda-redes)",
+        "José António Almeida Cruz, também conhecido como José Cruz (guarda-redes)",
         "Rogério, alcunha «Castanheira» (roupeiro)"
       ],
       baixo: [

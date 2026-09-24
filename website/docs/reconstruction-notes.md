@@ -30,7 +30,7 @@
 | Cores | **vermelho e branco** | usar azul/verde/amarelo do emblema como cores do clube | C |
 | Modalidade | **só futebol de veteranos** | criar secções de atletismo, ciclismo ou formação sem fonte | C |
 | Palmarés | **3 títulos da AFL**: 1988/89, 1989/90, 1991/92 | listar títulos não documentados | **A** + C |
-| Pessoas | **Joaquim Lourenço** e **Joaquim Álvaro Sampaio Lourenço** são distintos | fundir homónimos parciais | C |
+| Pessoas | **Joaquim Lourenço** é pai de **Joaquim Álvaro Sampaio Lourenço**; **Joaquim Jorge Sampaio Jacinto** é outro membro da família | confundir membros da família | C |
 | Identidade | **um emblema**, três representações | declarar vários emblemas "oficiais" | **A** |
 | Fotografia | legenda «Equipa Vencedora do Bi-Campeonato» | nomear atletas sem fonte | B |
 
@@ -41,7 +41,6 @@
 | Página de equipas com plantel e nomes de jogadores | Era **conteúdo-modelo** com nomes fictícios; não foi transportado. |
 | Secções de atletismo e ciclismo | Sem qualquer fonte (guardrail: só veteranos). |
 | Morada, telefone e email | Só existe referência num diretório de terceiros (classe **D**), não confirmada. |
-| Identificação nominal na fotografia | Existe uma lista de jogadores (classe C), mas **não** indica quem está na imagem nem em que posição. |
 | Títulos na cronologia | Passaram a existir apenas em `honours.js`, para não duplicar. |
 | Fonte de títulos do site anterior (Anton) | Dependência de CDN; incompatível com o funcionamento offline. |
 

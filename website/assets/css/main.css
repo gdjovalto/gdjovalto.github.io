@@ -258,7 +258,7 @@ a:hover{color:var(--jv-vermelho-escuro)}
 .jogadores{list-style:none;margin:0;padding:0}
 .jogadores li{padding:.4rem 0;border-bottom:1px solid var(--jv-linha);break-inside:avoid}
 .jogadores li span{display:block}
-.aviso-nome{font-size:var(--jv-mini);color:var(--jv-texto-suave);margin-top:.15rem;max-width:52ch}
+.aviso-nome{display:block;font-size:var(--jv-mini);color:var(--jv-texto-suave);margin-top:.15rem;max-width:52ch}
 
 @media (min-width:760px){
   .jogadores{columns:2;column-gap:2.5rem}

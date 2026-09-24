@@ -52,7 +52,7 @@ Reconstrução do sítio do **Grupo Desportivo Jovalto** como sítio estático (
 - **Cores do clube: vermelho e branco.** O emblema contém também azul, verde e amarelo, mas essas são cores **do emblema** — não são cores do clube e não são usadas no sítio.
 - **Apenas futebol de veteranos** está documentado. **Não existem** secções de atletismo, ciclismo ou outras modalidades.
 - **Três títulos da AFL (veteranos)**: **1988/89, 1989/90 e 1991/92**.
-- **Joaquim Lourenço** e **Joaquim Álvaro Sampaio Lourenço** são **pessoas distintas** e nunca podem ser fundidas num único registo.
+- **Joaquim Lourenço** é pai de **Joaquim Álvaro Sampaio Lourenço**; **Joaquim Jorge Sampaio Jacinto** é outro membro da família.
 - **Um único emblema histórico**, em **três representações**: original físico, digitalização intermédia e reconstrução digital oficial.
 
 ---
@@ -144,9 +144,8 @@ Estado verificado em **2026-09-23** (detalhe e limites em `docs/verification.md`
 | --- | --- |
 | `tools\check-integrity.ps1` | 6 páginas, 186 ligações locais — **0 quebradas** (1 ligação externa ignorada) |
 | `tools\apply-footer.ps1 -Check` | 0 marcadores de rodapé por resolver |
-| DOM renderizado (Edge em modo headless) | 8 linhas de identidade, **45 jogadores**, 2 marcos de cronologia, 3 títulos, 3 pessoas, 3 representações do emblema, 2 documentos e 1 fotografia |
-| Lista de jogadores (`jogadores/`) | 45 nomes por ordem alfabética, 2 avisos de homónimos e filtro a funcionar |
-| Tabela de fontes (`arquivo/`) | 8 linhas e 3 cabeçalhos de coluna renderizados |
+| DOM renderizado (Edge em modo headless) | 8 linhas de identidade, **45 jogadores**, 2 marcos de cronologia, 3 títulos, 4 pessoas, 3 representações do emblema, 2 documentos e 1 fotografia |
+| Lista de jogadores (`jogadores/`) | 45 nomes por ordem alfabética, 9 referências à fotografia e filtro a funcionar |
 | Paleta | Sem azul, verde ou amarelo no CSS — apenas o vermelho do clube, branco e neutros |
 | `assets/css/main.css` | Chavetas equilibradas (109 / 109) |
 

@@ -287,8 +287,7 @@
         return;
       }
 
-      var avisos = {};
-      (dados.avisos || []).forEach(function (a) { avisos[a.nome] = a.texto; });
+      var fotografia = dados.fotografia || {};
 
       var nomes = dados.nomes.slice().sort(function (a, b) {
         return a.localeCompare(b, "pt");
@@ -299,8 +298,12 @@
 
       alvo.appendChild(el("ul", { classe: "jogadores" }, nomes.map(function (nome) {
         var item = el("li", {}, [el("span", { texto: nome })]);
-        if (avisos[nome]) {
-          item.appendChild(el("span", { classe: "aviso-nome", texto: avisos[nome] }));
+        if (fotografia[nome]) {
+          item.appendChild(el("a", {
+            classe: "aviso-nome",
+            texto: "Na fotografia da página inicial: " + fotografia[nome],
+            attrs: { href: "../index.html#fotografia-equipa" }
+          }));
         }
         return item;
       })));

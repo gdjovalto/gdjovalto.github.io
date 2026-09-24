@@ -54,9 +54,9 @@ cmd /c "$edge --headless --disable-gpu --dump-dom `"file:///C:/Users/pedro/Deskt
 | `arquivo/` | – | – | – | – | – | **2** | – | sim |
 | `contactos/` | – | – | – | – | – | – | – | sim |
 
-Valores esperados, para conferência: 2 marcos em `data/timeline.js`, 3 títulos em `data/honours.js`, 3 pessoas em `data/people.js`, 1 fotografia em `data/gallery.js`, 2 documentos em `data/documents.js`, 8 fontes em `data/sources.js`, 8 campos em `data/clube.js` e **45 nomes** em `data/jogadores.js`.
+Valores esperados, para conferência: 2 marcos em `data/timeline.js`, 3 títulos em `data/honours.js`, 4 pessoas em `data/people.js`, 1 fotografia em `data/gallery.js`, 2 documentos em `data/documents.js`, 8 fontes em `data/sources.js`, 8 campos em `data/clube.js` e **45 nomes** em `data/jogadores.js`.
 
-Na página `arquivo/`, a tabela de fontes renderiza **8 linhas** e **3 cabeçalhos de coluna**. Na página `jogadores/`, a lista renderiza **45 nomes** por ordem alfabética, com **2 avisos de homónimos** e o campo de filtro presente. Nenhuma página tem `<!-- @@RODAPE@@ -->` por resolver.
+Na página `jogadores/`, a lista renderiza **45 nomes** por ordem alfabética, com **9 referências à fotografia da página inicial** e o campo de filtro presente. Nenhuma página tem `<!-- @@RODAPE@@ -->` por resolver.
 
 ### 3.1 Defeito detetado e corrigido nesta revisão
 

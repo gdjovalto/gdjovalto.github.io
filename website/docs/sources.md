@@ -63,7 +63,7 @@ Factos fornecidos pelo clube, sem documento anexo nesta pasta. Registados em `da
 | **Cores do clube** | **vermelho e branco** |
 | Modalidade | futebol de veteranos |
 | Competição | Associação de Futebol de Lisboa (AFL) |
-| Homónimos | **Joaquim Lourenço**, **Joaquim Álvaro Sampaio Lourenço** e **Joaquim Jorge Sampaio Jacinto** são **três pessoas distintas** |
+| Família | **Joaquim Lourenço** é pai de **Joaquim Álvaro Sampaio Lourenço**; **Joaquim Jorge Sampaio Jacinto** é outro membro da família |
 | Jogadores | **Lista nominal de 45 jogadores** que passaram pelo clube (`data/jogadores.js`) — sem épocas, posições, jogos ou golos |
 
 **Notas de rigor:**
@@ -76,7 +76,7 @@ Factos fornecidos pelo clube, sem documento anexo nesta pasta. Registados em `da
 ### Alberto Helder, «FUTEBOL – UM EMOTIVO REENCONTRO APÓS 48 ANOS…», 24/01/2024 — classe **C**
 
 - **Localização:** `albertohelder.blogspot.com/2024/01/futebol-um-emotivo-reencontro-apos-48.html`
-- **Evidencia:** nomeia «**o Jovalto (Veteranos)**» e indica que o jogador José Cruz foi campeão em campeonatos populares promovidos pela **AFL** (pelo União, pelo 1.º de Junho-Imparcial e pelo Jovalto).
+- **Evidencia:** nomeia «**o Jovalto (Veteranos)**» e indica que o jogador **José António Almeida Cruz**, também conhecido como **José Cruz**, foi campeão em campeonatos populares promovidos pela **AFL** (pelo União, pelo 1.º de Junho-Imparcial e pelo Jovalto).
 - **Utilidade:** **corrobora externamente** dois guardrails deste projeto: futebol **de veteranos** e títulos em **provas organizadas pela AFL**.
 - **Limitações:** fonte terciária/jornalística, sem documento anexo reproduzido; não é usada para fixar datas concretas.
 
