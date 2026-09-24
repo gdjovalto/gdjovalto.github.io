@@ -201,7 +201,11 @@ a:hover{color:var(--jv-vermelho-escuro)}
 .cartao h3{margin-bottom:.3rem}
 .cartao p:last-child{margin-bottom:0}
 .cartao--ident{border-left:4px solid var(--jv-vermelho)}
+.cartao--fonte{border-top:4px solid var(--jv-vermelho)}
 .origem{font-size:var(--jv-peq);color:var(--jv-texto-suave);margin:.5rem 0 0}
+.categoria,.estado{font-size:var(--jv-mini);font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--jv-vermelho)}
+.fonte-detalhes{display:grid;grid-template-columns:max-content 1fr;gap:.2rem .7rem;margin:0;font-size:var(--jv-peq)}
+.fonte-detalhes dt{font-weight:700}.fonte-detalhes dd{margin:0}
 
 /* --- Emblema ------------------------------------------------------------- */
 
@@ -264,12 +268,15 @@ a:hover{color:var(--jv-vermelho-escuro)}
   font:inherit;font-size:var(--jv-peq);padding:.4rem .6rem;
   border:1px solid var(--jv-linha);border-radius:var(--jv-raio);min-width:220px;max-width:100%;
 }
-.jogadores{list-style:none;margin:0;padding:0}
-.jogadores li{padding:.4rem 0;border-bottom:1px solid var(--jv-linha);break-inside:avoid}
-.jogadores li span{display:block}
+.jogadores{display:grid;gap:1rem}
+.jogador{border:1px solid var(--jv-linha);border-radius:var(--jv-raio);padding:1rem}
+.jogador h2{font-size:1.05rem;margin:0 0 .45rem}
+.jogador p{margin-bottom:.35rem}
+.jogador__epocas{margin:.3rem 0;padding-left:1.2rem}
+.jogador__epocas small{display:block;color:var(--jv-texto-suave)}
 .aviso-nome{display:block;font-size:var(--jv-mini);color:var(--jv-texto-suave);margin-top:.15rem;max-width:52ch}
 
 @media (min-width:760px){
-  .jogadores{columns:2;column-gap:2.5rem}
+  .jogadores{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 

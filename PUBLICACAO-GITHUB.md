@@ -12,7 +12,10 @@ O repositório `pedrosampaiolourenco-cmyk/Jovalto` pode ser usado para desenvolv
 mas o seu endereço padrão de Pages será
 `https://pedrosampaiolourenco-cmyk.github.io/Jovalto/`, não o domínio pretendido.
 
-## Publicação automática
+## Estado e publicação automática
+
+O repositório público é `gdjovalto/gdjovalto.github.io` e o sítio está publicado em
+`https://gdjovalto.github.io/`.
 
 O workflow `.github/workflows/pages.yml`:
 

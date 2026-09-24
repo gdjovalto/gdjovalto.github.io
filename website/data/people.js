@@ -1,44 +1,8 @@
-/* ==========================================================================
-   Pessoas.
-   Relações familiares confirmadas pelo clube.
-   ========================================================================== */
+/* Pessoas distintas; relações familiares não documentadas não são publicadas. */
 window.JOVALTO = window.JOVALTO || {};
-
 window.JOVALTO.people = [
-  {
-    id: "p-joaquim-lourenco",
-    nome: "Joaquim Lourenço",
-    valor: "Pai de Joaquim Álvaro Sampaio Lourenço.",
-    classe: "C",
-    fonte: "Declaração do clube (registo de projeto, 2026)",
-    nota: "Relação familiar confirmada pelo clube em 2026.",
-    estado: "confirmado"
-  },
-  {
-    id: "p-joaquim-alvaro-sampaio-lourenco",
-    nome: "Joaquim Álvaro Sampaio Lourenço",
-    valor: "Filho de Joaquim Lourenço e jogador do Grupo Desportivo Jovalto.",
-    classe: "C",
-    fonte: "Declaração do clube (registo de projeto, 2026)",
-    nota: "Relação familiar confirmada pelo clube em 2026. Consta também da lista de jogadores e da fotografia da equipa.",
-    estado: "confirmado"
-  },
-  {
-    id: "p-joaquim-jorge-sampaio-jacinto",
-    nome: "Joaquim Jorge Sampaio Jacinto",
-    valor: "Outro membro da família ligado ao Grupo Desportivo Jovalto.",
-    classe: "C",
-    fonte: "Declaração do clube (registo de projeto, 2026)",
-    nota: "Pessoa distinta de Joaquim Lourenço e de Joaquim Álvaro Sampaio Lourenço. Consta também da lista de jogadores.",
-    estado: "confirmado"
-  },
-  {
-    id: "p-jose-cruz",
-    nome: "José António Almeida Cruz",
-    valor: "Guarda-redes e antigo jogador que mais títulos conquistou nos campeonatos populares promovidos pela AFL.",
-    classe: "C",
-    fonte: "albertohelder.blogspot.com/2024/01/futebol-um-emotivo-reencontro-apos-48.html",
-    nota: "Também conhecido como José Cruz. A fonte jornalística (artigo de 24/01/2024) refere-o como campeão pelo União Desportivo Clube, pelo 1.º de Junho-Imparcial e «ainda pelo Jovalto (Veteranos)». Consta da lista de jogadores e da fotografia da equipa.",
-    estado: "confirmado"
-  }
+  { id: "p-joaquim-lourenco", nome: "Joaquim Lourenço", valor: "Figura histórica do Jovalto, registada como presidente desde 1987. A data final da presidência está por determinar.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "confirmado" },
+  { id: "p-joaquim-alvaro-sampaio-lourenco", nome: "Joaquim Álvaro Sampaio Lourenço", valor: "Pessoa distinta de Joaquim Lourenço. Associado à investigação do futebol do Jovalto e identificado na fotografia histórica da equipa.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "confirmado" },
+  { id: "p-joaquim-jorge-sampaio-jacinto", nome: "Joaquim Jorge Sampaio Jacinto", valor: "Pessoa distinta de Joaquim Lourenço e Joaquim Álvaro Sampaio Lourenço. Associado à investigação histórica e futebolística do Jovalto.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", nota: "Não equiparar automaticamente a Joaquim Jacinto.", estado: "em investigação" },
+  { id: "p-jose-cruz", nome: "José António Almeida Cruz", valor: "Também conhecido como José Cruz. Guarda-redes identificado na fotografia e referido pela imprensa como campeão pelo Jovalto em Veteranos.", classe: "C", fonte: "Imprensa e Arquivo do GD Jovalto", tipoFonte: "Imprensa / arquivo histórico", estado: "confirmado" }
 ];

@@ -1,28 +1,13 @@
-/* ==========================================================================
-   Cronologia — apenas os marcos fundadores.
-   Os títulos NÃO são repetidos aqui: vivem exclusivamente em honours.js.
-   ========================================================================== */
+/* Cronologia histórica. As letras de evidência são apenas internas. */
 window.JOVALTO = window.JOVALTO || {};
-
 window.JOVALTO.timeline = [
-  {
-    id: "m-1965",
-    ano: "1965",
-    titulo: "Fundação",
-    texto: "Fundação do Grupo Desportivo Jovalto.",
-    classe: "C",
-    fonte: "Declaração do clube",
-    nota: "A fundação é 1965 e não deve ser confundida com a constituição legal de 1987.",
-    estado: "confirmado"
-  },
-  {
-    id: "m-1987",
-    ano: "1987",
-    titulo: "Constituição legal",
-    texto: "Formalização jurídica do clube, vinte e dois anos após a fundação.",
-    classe: "C",
-    fonte: "Declaração do clube",
-    nota: "Marco distinto da fundação.",
-    estado: "confirmado"
-  }
+  { id: "m-1965-fundacao", ano: "01/01/1965", titulo: "Fundação", texto: "Fundação do Grupo Desportivo Jovalto.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "confirmado" },
+  { id: "m-1965-treinador", ano: "1965", titulo: "Abílio, treinador", texto: "Abílio é registado no arquivo do clube como treinador em 1965. O apelido e outros dados biográficos permanecem por determinar.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "confirmado" },
+  { id: "m-1965-1986", ano: "1965–1986", titulo: "Jogos interempresas", texto: "O GD Jovalto disputou jogos e troféus contra grupos desportivos ligados a empresas, em particular do setor automóvel: Firma Stock, Auto Radiante, Lemauto e Auto Portuguesa. Os encontros realizavam-se nos campos de treino do complexo do Estádio Nacional, no Jamor.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "confirmado" },
+  { id: "m-presidencia-jacinto", ano: "1965–1987", titulo: "Presidência de Joaquim Jacinto", texto: "O arquivo do clube regista Joaquim Jacinto como presidente. A sua identidade não é automaticamente equiparada à de Joaquim Jorge Sampaio Jacinto.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "confirmado" },
+  { id: "m-1987-legal", ano: "29/06/1987", titulo: "Constituição legal", texto: "Constituição formal da associação, com sede histórica na Rua Freitas Gazul, 17-B, em Campo de Ourique, Lisboa. Publicada no Diário da República, III Série, n.º 187, de 17/08/1987. Não corresponde à data de fundação.", classe: "A", fonte: "Diário da República", tipoFonte: "Documento oficial", estado: "confirmado" },
+  { id: "m-1987-presidente", ano: "Desde 1987", titulo: "Presidência de Joaquim Lourenço", texto: "O arquivo do clube regista Joaquim Lourenço como presidente desde 1987. Data final por determinar.", classe: "C", fonte: "Arquivo do GD Jovalto", tipoFonte: "Arquivo histórico", estado: "por determinar" },
+  { id: "m-1988-89", ano: "1988/89", titulo: "Campeão AFL — Veteranos", texto: "Primeiro dos três títulos documentados do GD Jovalto na Associação de Futebol de Lisboa.", classe: "A", fonte: "Associação de Futebol de Lisboa", tipoFonte: "Documento oficial", estado: "confirmado" },
+  { id: "m-1989-90", ano: "1989/90", titulo: "Bicampeonato", texto: "Segundo título consecutivo de Veteranos: 1988/89 e 1989/90 formam o bicampeonato.", classe: "A", fonte: "Associação de Futebol de Lisboa", tipoFonte: "Documento oficial", estado: "confirmado" },
+  { id: "m-1991-92", ano: "1991/92", titulo: "Terceiro título", texto: "Terceiro título documentado do GD Jovalto na competição de Veteranos da AFL.", classe: "A", fonte: "Associação de Futebol de Lisboa", tipoFonte: "Documento oficial", estado: "confirmado" }
 ];

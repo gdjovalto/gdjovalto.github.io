@@ -31,9 +31,9 @@
 
   function linhaMeta(item) {
     return el("p", { classe: "meta" }, [
-      el("span", { texto: "Fonte:" }),
-      el("code", { texto: item.fonte || "sem fonte" }),
-      el("span", { texto: "Estado: " + (item.estado || "por confirmar") })
+      el("span", { texto: "Fonte: " + (item.fonte || "Informação por confirmar") }),
+      el("span", { texto: "Tipo: " + (item.tipoFonte || "Informação por confirmar") }),
+      el("span", { texto: "Estado: " + (item.estado || "Por confirmar") })
     ]);
   }
 
@@ -70,6 +70,7 @@
           el("td", { classe: "tabela__epoca", texto: item.epoca || "por datar" }),
           el("td", {}, [
             el("span", { texto: item.valor }),
+            item.destaque ? el("p", { classe: "estado", texto: item.destaque }) : null,
             linhaMeta(item)
           ])
         ]);
@@ -153,6 +154,8 @@
           el("span", { texto: item.valor }),
           el("span", { classe: "galeria__instrucao", texto: "Clique na fotografia para ampliar." })
         ];
+        if (item.contexto) { conteudoLegenda.push(el("p", { texto: item.contexto })); }
+        if (item.equipamento) { conteudoLegenda.push(el("p", { texto: item.equipamento })); }
         if (item.identificacao) {
           conteudoLegenda.push(el("div", { classe: "foto-identificacao" }, [
             el("div", {}, [
@@ -170,7 +173,7 @@
           ]));
           conteudoLegenda.push(el("p", {
             classe: "foto-identificacao__fonte",
-            texto: "Identificação fornecida pelo clube. Os lugares assinalados não foram identificados."
+            texto: "Identificação fornecida pelo arquivo do GD Jovalto. Os lugares assinalados não foram identificados."
           }));
         }
         conteudoLegenda.push(linhaMeta(item));
@@ -196,11 +199,11 @@
           el("p", {}, [
             el("a", {
               texto: "Abrir " + (item.tipo || "ficheiro"),
-              attrs: { href: caminho(item.ficheiro) }
+               attrs: item.ficheiro.indexOf("http") === 0 ? { href: caminho(item.ficheiro), target: "_blank", rel: "noopener noreferrer" } : { href: caminho(item.ficheiro) }
             })
           ]),
           linhaMeta(item),
-          el("p", { classe: "origem", texto: item.nota })
+          item.nota ? el("p", { classe: "origem", texto: item.nota }) : null
         ]));
       });
     });
@@ -240,13 +243,13 @@
           el("h3", { texto: item.nome }),
           el("p", { texto: item.valor }),
           linhaMeta(item),
-          el("p", { classe: "origem", texto: item.nota })
+          item.nota ? el("p", { classe: "origem", texto: item.nota }) : null
         ]));
       });
     });
   }
 
-  /* --- Fontes: tabela a partir de sources.js ----------------------------- */
+  /* --- Fontes públicas: cartões sem expor o modelo A–D ------------------- */
 
   function renderFontes() {
     preencher("tabela-fontes", function (alvo) {
@@ -255,28 +258,18 @@
         alvo.appendChild(el("p", { texto: "Sem fontes registadas." }));
         return;
       }
-      var corpo = el("tbody", {}, itens.map(function (item) {
-        return el("tr", {}, [
-          el("td", {}, [
-            el("span", { texto: item.valor }),
-            el("p", { classe: "origem", texto: item.nota })
-          ]),
-          el("td", {}, [el("code", { texto: item.fonte })])
-        ]);
-      }));
-
-      var tabela = el("table", { classe: "tabela" }, [
-        el("caption", { texto: "Fontes consultadas e respetivas limitações." }),
-        el("thead", {}, [
-          el("tr", {}, [
-            el("th", { attrs: { scope: "col" }, texto: "Fonte" }),
-            el("th", { attrs: { scope: "col" }, texto: "Referência" })
+      itens.forEach(function (item) {
+        alvo.appendChild(el("article", { classe: "cartao cartao--fonte" }, [
+          el("p", { classe: "categoria", texto: item.categoria }),
+          el("h3", { texto: item.fonte }),
+          el("p", { texto: item.valor }),
+          el("dl", { classe: "fonte-detalhes" }, [
+            el("dt", { texto: "Tipo" }), el("dd", { texto: item.tipoFonte }),
+            el("dt", { texto: "Referência" }), el("dd", { texto: item.referencia }),
+            el("dt", { texto: "Estado" }), el("dd", { texto: item.estado })
           ])
-        ]),
-        corpo
-      ]);
-
-      alvo.appendChild(el("div", { classe: "rolagem" }, [tabela]));
+        ]));
+      });
     });
   }
 
@@ -291,13 +284,14 @@
       }
       var linhas = [
         ["Nome", c.nome],
-        ["Sigla", c.sigla],
+        ["Nomes comuns", (c.nomesComuns || [c.sigla]).join(", ")],
         ["Fundação", c.fundacao],
         ["Constituição legal", c.constituicaoLegal],
         ["Modalidade", c.modalidade],
         ["Competição", c.competicao],
         ["Cores do clube", (c.cores || []).join(" e ")],
-        ["Localidade", c.localidade]
+        ["Localidade", c.localidade],
+        ["Sede histórica", c.sedeHistorica]
       ];
 
       var corpo = el("tbody", {}, linhas.map(function (par) {
@@ -321,26 +315,36 @@
   function renderJogadores() {
     preencher("lista-jogadores", function (alvo) {
       var dados = JV.jogadores;
-      if (!dados || !dados.nomes || !dados.nomes.length) {
+      if (!dados || !dados.jogadores || !dados.jogadores.length) {
         alvo.appendChild(el("p", { texto: "Sem lista de jogadores." }));
         return;
       }
 
-      var fotografia = dados.fotografia || {};
-
-      var nomes = dados.nomes.slice().sort(function (a, b) {
-        return a.localeCompare(b, "pt");
+      var jogadores = dados.jogadores.slice().sort(function (a, b) {
+        return a.nome.localeCompare(b.nome, "pt");
       });
 
       var contador = document.getElementById("jogadores-total");
-      if (contador) { contador.textContent = String(nomes.length); }
+      if (contador) { contador.textContent = String(jogadores.length); }
 
-      alvo.appendChild(el("ul", { classe: "jogadores" }, nomes.map(function (nome) {
-        var item = el("li", {}, [el("span", { texto: nome })]);
-        if (fotografia[nome]) {
+      alvo.appendChild(el("div", { classe: "jogadores" }, jogadores.map(function (jogador) {
+        var epocas = (jogador.epocas || []).map(function (epoca) {
+          return el("li", {}, [
+            el("strong", { texto: epoca.epoca + " — " }),
+            el("span", { texto: epoca.designacaoFonte }),
+            el("small", { texto: epoca.fonte + " · " + epoca.tipoFonte })
+          ]);
+        });
+        var item = el("article", { classe: "jogador" }, [
+          el("h2", { texto: jogador.nome }),
+          jogador.nascimento ? el("p", { texto: "Nascimento: " + jogador.nascimento }) : null,
+          epocas.length ? el("ul", { classe: "jogador__epocas" }, epocas) : el("p", { texto: "Época(s): em investigação" }),
+          el("p", { classe: "estado", texto: jogador.estado })
+        ]);
+        if (jogador.fotografia) {
           item.appendChild(el("a", {
             classe: "aviso-nome",
-            texto: "Na fotografia da página inicial: " + fotografia[nome],
+            texto: "Na fotografia da página inicial: " + jogador.fotografia,
             attrs: { href: "../index.html#fotografia-equipa" }
           }));
         }
@@ -351,13 +355,35 @@
       if (campo) {
         campo.addEventListener("input", function () {
           var termo = campo.value.trim().toLowerCase();
-          var itens = alvo.querySelectorAll("li");
-          Array.prototype.forEach.call(itens, function (li) {
-            var corresponde = termo === "" || li.textContent.toLowerCase().indexOf(termo) !== -1;
-            li.style.display = corresponde ? "" : "none";
+          var itens = alvo.querySelectorAll(".jogador");
+          Array.prototype.forEach.call(itens, function (cartao) {
+            var corresponde = termo === "" || cartao.textContent.toLowerCase().indexOf(termo) !== -1;
+            cartao.style.display = corresponde ? "" : "none";
           });
         });
       }
+    });
+  }
+
+  function renderRecintos() {
+    preencher("lista-recintos", function (alvo) {
+      (JV.venues || []).forEach(function (item) {
+        alvo.appendChild(el("article", { classe: "cartao" }, [el("h3", { texto: item.nome }), el("p", { texto: item.uso }), el("p", { classe: "origem", texto: item.ressalva }), linhaMeta(item)]));
+      });
+    });
+  }
+
+  function renderEpocas() {
+    preencher("lista-epocas", function (alvo) {
+      (JV.seasons || []).forEach(function (item) {
+        alvo.appendChild(el("article", { classe: "cartao epoca" }, [
+          el("h3", { texto: item.season + (item.title !== "—" ? " — " + item.title : "") }),
+          el("p", { texto: item.competition }),
+          el("p", { texto: item.players.length ? "Jogadores com época identificada: " + item.players.join(", ") : "Plantel: informação em recuperação" }),
+          el("p", { texto: "Classificação: " + item.classification }),
+          el("p", { classe: "estado", texto: item.researchStatus })
+        ]));
+      });
     });
   }
 
@@ -387,6 +413,8 @@
     renderCronologia();
     renderPessoas();
     renderFontes();
+    renderRecintos();
+    renderEpocas();
     iniciarNavegacao();
     escreverAno();
   }
