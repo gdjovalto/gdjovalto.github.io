@@ -1,0 +1,266 @@
+/* ==========================================================================
+   GD Jovalto — folha de estilos única
+
+   CORES DO CLUBE: VERMELHO E BRANCO.
+   O emblema histórico tem também azul, verde e amarelo, mas essas são cores
+   DO EMBLEMA — não são usadas como cores do sítio.
+
+   Sem dependências externas, sem CDN, sem chamadas de rede.
+   ========================================================================== */
+
+:root{
+  /* Cores do clube */
+  --jv-vermelho:#D00A1E;
+  --jv-vermelho-escuro:#A50715;
+  --jv-branco:#FFFFFF;
+
+  /* Neutros */
+  --jv-texto:#1A1A1A;
+  --jv-texto-suave:#5F5F5F;
+  --jv-linha:#E3E3E3;
+  --jv-fundo:#FFFFFF;
+  --jv-fundo-alt:#F7F7F7;
+  --jv-escuro:#141414;
+
+  /* Tipografia */
+  --jv-fonte-base:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --jv-fonte-mono:Consolas,"Courier New",monospace;
+  --jv-t1:clamp(1.6rem,1.2rem + 1.6vw,2.2rem);
+  --jv-t2:clamp(1.25rem,1.1rem + .8vw,1.6rem);
+  --jv-peq:.875rem;
+  --jv-mini:.78rem;
+
+  /* Medidas */
+  --jv-largura:940px;
+  --jv-raio:6px;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--jv-fonte-base);
+  font-size:1rem;
+  line-height:1.6;
+  color:var(--jv-texto);
+  background:var(--jv-fundo);
+}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{line-height:1.25;margin:0 0 .6rem}
+h1{font-size:var(--jv-t1)}
+h2{font-size:var(--jv-t2);margin-top:2.2rem}
+h2:first-child{margin-top:0}
+h3{font-size:1.05rem}
+p,ul,ol,table{margin:0 0 1rem}
+p,li{max-width:65ch}
+a{color:var(--jv-vermelho)}
+a:hover{color:var(--jv-vermelho-escuro)}
+:focus-visible{outline:3px solid var(--jv-texto);outline-offset:2px}
+.site-header :focus-visible,.site-footer :focus-visible{outline-color:var(--jv-branco)}
+
+.wrap{max-width:var(--jv-largura);margin:0 auto;padding:0 1rem}
+.skip-link{position:absolute;left:-9999px;top:0}
+.skip-link:focus{left:0;background:var(--jv-vermelho);color:var(--jv-branco);padding:.6rem 1rem;z-index:10}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+
+/* --- Cabeçalho ----------------------------------------------------------- */
+
+.site-header{background:var(--jv-branco);border-bottom:1px solid var(--jv-linha)}
+.site-header__inner{
+  max-width:var(--jv-largura);margin:0 auto;padding:.7rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--jv-texto)}
+.brand img{width:38px}
+.brand__text{display:flex;flex-direction:column;line-height:1.2}
+.brand__text strong{font-size:1rem}
+.brand__text small{font-size:var(--jv-mini);color:var(--jv-texto-suave)}
+
+.nav-toggle{
+  background:none;border:1px solid var(--jv-linha);border-radius:var(--jv-raio);
+  padding:.4rem .7rem;font:inherit;font-size:var(--jv-peq);color:var(--jv-texto);cursor:pointer;
+}
+.nav{display:none;width:100%}
+.nav.is-open{display:block}
+.nav ul{list-style:none;margin:0;padding:0}
+.nav a{
+  display:block;padding:.55rem 0;text-decoration:none;color:var(--jv-texto);
+  border-bottom:1px solid var(--jv-linha);font-size:.95rem;
+}
+.nav a[aria-current="page"]{color:var(--jv-vermelho);font-weight:600}
+
+/* --- Faixa de abertura --------------------------------------------------- */
+
+.hero{background:var(--jv-vermelho);color:var(--jv-branco);padding:2.2rem 0}
+.hero__inner{
+  max-width:var(--jv-largura);margin:0 auto;padding:0 1rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.hero h1{color:var(--jv-branco)}
+.hero__lema{color:var(--jv-branco);margin:0;max-width:46ch}
+.hero__meta{font-family:var(--jv-fonte-mono);font-size:var(--jv-peq);color:var(--jv-branco);margin:.6rem 0 0}
+/* Emblema em disco branco, como na camisola.
+   O emblema é retrato (1128x1394 = 0,809). Para caber inteiro dentro do
+   círculo, o retângulo tem de respeitar sqrt((w/2)²+(h/2)²) <= D/2; com
+   altura a 76% da largura do círculo, w=0,615·D e o canto fica a 0,489·D —
+   dentro do raio, logo sem corte. */
+.emblema-redondo{
+  flex:0 0 auto;
+  width:clamp(118px,20vw,176px);
+  height:clamp(118px,20vw,176px);
+  background:var(--jv-branco);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.emblema-redondo img{width:auto;height:auto;max-width:76%;max-height:76%}
+
+/* --- Botões -------------------------------------------------------------- */
+
+.btn{
+  display:inline-block;padding:.55rem 1.1rem;border-radius:var(--jv-raio);
+  text-decoration:none;font-weight:600;font-size:.9rem;border:2px solid transparent;
+}
+.btn--branco{background:var(--jv-branco);color:var(--jv-vermelho)}
+.btn--branco:hover{background:#F0F0F0;color:var(--jv-vermelho-escuro)}
+.btn--contorno{border-color:var(--jv-branco);color:var(--jv-branco)}
+.btn--contorno:hover{background:var(--jv-branco);color:var(--jv-vermelho)}
+.btn--vermelho{background:var(--jv-vermelho);color:var(--jv-branco)}
+.btn--vermelho:hover{background:var(--jv-vermelho-escuro);color:var(--jv-branco)}
+.btn-lista{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+
+/* --- Secções ------------------------------------------------------------- */
+
+.section{padding:2.2rem 0}
+.section--alt{background:var(--jv-fundo-alt);border-top:1px solid var(--jv-linha);border-bottom:1px solid var(--jv-linha)}
+.section__intro{color:var(--jv-texto-suave)}
+.grid{display:grid;gap:1rem}
+
+/* --- Rodapé -------------------------------------------------------------- */
+
+.site-footer{
+  background:var(--jv-escuro);color:#D8D8D8;border-top:4px solid var(--jv-vermelho);
+  margin-top:2.5rem;padding:2rem 0;font-size:var(--jv-peq);
+}
+.site-footer h2{color:var(--jv-branco);font-size:1rem;margin-bottom:.5rem;margin-top:0}
+.site-footer a{color:var(--jv-branco);text-decoration:none}
+.site-footer a:hover{text-decoration:underline;color:var(--jv-branco)}
+.site-footer ul{list-style:none;margin:0;padding:0}
+.site-footer li{margin-bottom:.3rem}
+.site-footer__grid{display:grid;gap:1.5rem}
+.site-footer__nota{border-top:1px solid #333;margin-top:1.5rem;padding-top:1rem;font-size:var(--jv-mini)}
+.legenda-ev li{display:flex;gap:.5rem;align-items:baseline}
+
+/* --- Avisos -------------------------------------------------------------- */
+
+.nota{
+  background:var(--jv-fundo-alt);border-left:4px solid var(--jv-vermelho);
+  border-radius:0 var(--jv-raio) var(--jv-raio) 0;
+  padding:.8rem 1rem;font-size:.92rem;
+}
+.nota p:last-child{margin-bottom:0}
+.nota + .nota{margin-top:.8rem}
+
+/* --- Cronologia ---------------------------------------------------------- */
+
+.cronologia{list-style:none;margin:0;padding:0}
+.cronologia li{padding:0 0 1.2rem 1rem;border-left:2px solid var(--jv-linha)}
+.cronologia li:last-child{padding-bottom:0;border-left-color:transparent}
+.cronologia h3{margin:.1rem 0 .2rem}
+.cronologia__ano{font-family:var(--jv-fonte-mono);font-weight:700;color:var(--jv-vermelho)}
+
+/* --- Fotografia ---------------------------------------------------------- */
+
+.galeria{display:grid;gap:1rem}
+.galeria figure{margin:0;border:1px solid var(--jv-linha);border-radius:var(--jv-raio);overflow:hidden}
+.galeria img{width:100%}
+.galeria figcaption{padding:.8rem;font-size:var(--jv-peq);color:var(--jv-texto-suave)}
+.galeria figcaption strong{display:block;color:var(--jv-texto);font-size:1rem}
+.foto-identificacao{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem;margin-top:1rem;color:var(--jv-texto)}
+.foto-identificacao h3{font-size:.95rem;margin:0 0 .35rem}
+.foto-identificacao ol{margin:0;padding-left:1.5rem}
+.foto-identificacao li{margin:.2rem 0}
+.foto-identificacao__fonte{margin:.75rem 0 0;font-style:italic}
+@media (max-width:640px){.foto-identificacao{grid-template-columns:1fr}}
+
+/* --- Cartões (documentos e pessoas) -------------------------------------- */
+
+.cartao{border:1px solid var(--jv-linha);border-radius:var(--jv-raio);padding:1rem}
+.cartao h3{margin-bottom:.3rem}
+.cartao p:last-child{margin-bottom:0}
+.cartao--ident{border-left:4px solid var(--jv-vermelho)}
+.origem{font-size:var(--jv-peq);color:var(--jv-texto-suave);margin:.5rem 0 0}
+
+/* --- Emblema ------------------------------------------------------------- */
+
+.emblema-grid{display:grid;gap:1rem}
+.emblema-item{border:1px solid var(--jv-linha);border-radius:var(--jv-raio);padding:1rem}
+.emblema-item img{margin:0 auto .6rem;max-height:220px;width:auto}
+.emblema-item p{font-size:var(--jv-peq);max-width:none}
+
+/* --- Tabelas ------------------------------------------------------------- */
+
+.tabela{width:100%;border-collapse:collapse;font-size:.95rem}
+.tabela caption{text-align:left;color:var(--jv-texto-suave);font-size:var(--jv-peq);padding-bottom:.5rem}
+.tabela th,.tabela td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--jv-linha);vertical-align:top}
+.tabela thead th{background:var(--jv-vermelho);color:var(--jv-branco);font-size:var(--jv-peq)}
+.tabela tbody tr:nth-child(even){background:var(--jv-fundo-alt)}
+.tabela__epoca{font-family:var(--jv-fonte-mono);font-weight:700;white-space:nowrap;color:var(--jv-vermelho)}
+.rolagem{overflow-x:auto}
+
+/* --- Etiquetas de evidência e proveniência ------------------------------- */
+
+.etiqueta{
+  display:inline-block;border:1px solid var(--jv-linha);background:var(--jv-fundo-alt);
+  border-radius:999px;padding:1px 8px;font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--jv-texto-suave);white-space:nowrap;
+}
+.etiqueta--a{border-color:var(--jv-vermelho);color:var(--jv-vermelho)}
+.meta{
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
+  font-size:var(--jv-mini);color:var(--jv-texto-suave);margin:.4rem 0 0;
+}
+.meta code{font-family:var(--jv-fonte-mono)}
+
+/* --- Responsivo ---------------------------------------------------------- */
+
+@media (min-width:760px){
+  .nav-toggle{display:none}
+  .nav{display:block;width:auto}
+  .nav ul{display:flex;gap:1.2rem}
+  .nav a{border:0;border-bottom:2px solid transparent;padding:.3rem 0}
+  .nav a[aria-current="page"]{border-bottom-color:var(--jv-vermelho)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .emblema-grid{grid-template-columns:repeat(3,1fr)}
+  .site-footer__grid{grid-template-columns:2fr 1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+@media print{
+  .site-header,.site-footer,.nav-toggle,.hero{background:#fff!important;color:#000!important}
+  .nav{display:none}
+  a::after{content:" (" attr(href) ")";font-size:.75em}
+}
+
+/* --- Lista de jogadores -------------------------------------------------- */
+
+.filtro{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+.filtro label{font-size:var(--jv-peq);color:var(--jv-texto-suave)}
+.filtro input{
+  font:inherit;font-size:var(--jv-peq);padding:.4rem .6rem;
+  border:1px solid var(--jv-linha);border-radius:var(--jv-raio);min-width:220px;max-width:100%;
+}
+.jogadores{list-style:none;margin:0;padding:0}
+.jogadores li{padding:.4rem 0;border-bottom:1px solid var(--jv-linha);break-inside:avoid}
+.jogadores li span{display:block}
+.aviso-nome{font-size:var(--jv-mini);color:var(--jv-texto-suave);margin-top:.15rem;max-width:52ch}
+
+@media (min-width:760px){
+  .jogadores{columns:2;column-gap:2.5rem}
+}
+
