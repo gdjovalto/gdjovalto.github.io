@@ -163,6 +163,12 @@ a:hover{color:var(--jv-vermelho-escuro)}
 }
 .nota p:last-child{margin-bottom:0}
 .nota + .nota{margin-top:.8rem}
+.memoria-fundador{
+  margin:2rem 0;padding:1rem 1.2rem;background:var(--jv-fundo-alt);
+  border-left:4px solid var(--jv-vermelho);border-radius:0 var(--jv-raio) var(--jv-raio) 0;
+}
+.memoria-fundador h2{margin-top:0}
+.memoria-fundador p:last-child{margin-bottom:0;font-weight:700}
 
 /* --- Cronologia ---------------------------------------------------------- */
 
@@ -202,6 +208,17 @@ a:hover{color:var(--jv-vermelho-escuro)}
 .cartao p:last-child{margin-bottom:0}
 .cartao--ident{border-left:4px solid var(--jv-vermelho)}
 .cartao--fonte{border-top:4px solid var(--jv-vermelho)}
+.documento-detalhado{grid-column:1/-1;min-width:0;padding:clamp(1rem,3vw,1.5rem);overflow-wrap:anywhere}
+.documento-detalhes{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.2rem .8rem;margin:.8rem 0 1rem}
+.documento-detalhes dt{font-weight:700}.documento-detalhes dd{margin:0}
+.transcricao{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--jv-linha)}
+.transcricao h4{font-size:1.05rem;margin:0 0 .6rem}
+.transcricao__texto{white-space:pre-line}
+.transcricao__nota{font-size:var(--jv-peq);color:var(--jv-texto-suave);font-style:italic}
+@media (max-width:520px){
+  .documento-detalhes{grid-template-columns:1fr;gap:0}
+  .documento-detalhes dd{margin:0 0 .55rem}
+}
 .origem{font-size:var(--jv-peq);color:var(--jv-texto-suave);margin:.5rem 0 0}
 .categoria,.estado{font-size:var(--jv-mini);font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--jv-vermelho)}
 .fonte-detalhes{display:grid;grid-template-columns:max-content 1fr;gap:.2rem .7rem;margin:0;font-size:var(--jv-peq)}

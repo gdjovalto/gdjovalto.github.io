@@ -193,18 +193,80 @@
         return;
       }
       itens.forEach(function (item) {
-        alvo.appendChild(el("article", { classe: "cartao cartao--ident" }, [
+        var detalhado = Boolean(item.transcricao && item.imagem !== false);
+        var conteudo = [
+          el("p", { classe: "categoria", texto: item.categoria }),
           el("h3", { texto: item.titulo }),
-          el("p", { texto: item.valor }),
-          el("p", {}, [
-            el("a", {
-              texto: "Abrir " + (item.tipo || "ficheiro"),
-               attrs: item.ficheiro.indexOf("http") === 0 ? { href: caminho(item.ficheiro), target: "_blank", rel: "noopener noreferrer" } : { href: caminho(item.ficheiro) }
-            })
-          ]),
-          linhaMeta(item),
-          item.nota ? el("p", { classe: "origem", texto: item.nota }) : null
-        ]));
+          el("p", { texto: item.valor })
+        ];
+
+        if (detalhado) {
+          conteudo.push(el("dl", { classe: "documento-detalhes" }, [
+            el("dt", { texto: "Autor" }), el("dd", { texto: item.autor }),
+            el("dt", { texto: "Data" }), el("dd", { texto: item.data }),
+            el("dt", { texto: "Tipo de fonte" }), el("dd", { texto: item.fonte + " — " + item.tipoFonte })
+          ]));
+
+          var ligacaoDocumento = el("a", {
+            texto: "Abrir imagem do documento original →",
+            attrs: {
+              href: caminho(item.ficheiro),
+              "aria-label": "Abrir a imagem do manuscrito original em tamanho completo"
+            }
+          });
+          var fecharDocumento = el("button", {
+            classe: "galeria__fechar",
+            texto: "Fechar",
+            attrs: { type: "button", "aria-label": "Fechar imagem do documento" }
+          });
+          var dialogoDocumento = el("dialog", {
+            classe: "galeria__dialogo",
+            attrs: { "aria-label": item.titulo + " ampliado" }
+          }, [
+            fecharDocumento,
+            el("img", { attrs: {
+              src: caminho(item.ficheiro),
+              alt: item.alt,
+              width: String(item.largura || ""),
+              height: String(item.altura || "")
+            }})
+          ]);
+          ligacaoDocumento.addEventListener("click", function (evento) {
+            if (typeof dialogoDocumento.showModal === "function") {
+              evento.preventDefault();
+              dialogoDocumento.showModal();
+            }
+          });
+          fecharDocumento.addEventListener("click", function () { dialogoDocumento.close(); });
+          dialogoDocumento.addEventListener("click", function (evento) {
+            if (evento.target === dialogoDocumento) { dialogoDocumento.close(); }
+          });
+          dialogoDocumento.addEventListener("close", function () { ligacaoDocumento.focus(); });
+          conteudo.push(el("p", {}, [ligacaoDocumento]));
+          conteudo.push(dialogoDocumento);
+
+          conteudo.push(el("section", { classe: "transcricao", attrs: { "aria-label": "Transcrição" } }, [
+            el("h4", { texto: "Transcrição" }),
+            el("p", { classe: "transcricao__nota", texto: item.notaTranscricao }),
+            el("div", {}, item.transcricao.map(function (paragrafo) {
+              return el("p", { classe: "transcricao__texto", texto: paragrafo });
+            }))
+          ]));
+        } else {
+          conteudo.push(el("p", {}, [el("a", {
+            texto: "Abrir " + (item.tipo || "ficheiro"),
+            attrs: item.ficheiro.indexOf("http") === 0 ?
+              { href: caminho(item.ficheiro), target: "_blank", rel: "noopener noreferrer" } :
+              { href: caminho(item.ficheiro) }
+          })]));
+        }
+
+        conteudo.push(linhaMeta(item));
+        if (item.nota) { conteudo.push(el("p", { classe: "origem", texto: item.nota })); }
+        alvo.appendChild(el("article", {
+          classe: "cartao cartao--ident" + (detalhado ? " documento-detalhado" : ""),
+          attrs: { id: item.id }
+        }, conteudo));
       });
     });
   }
