@@ -397,11 +397,25 @@
             el("small", { texto: epoca.fonte + " · " + epoca.tipoFonte })
           ]);
         });
+        var perfilZeroZero = jogador.perfilExterno || ("https://www.zerozero.pt/pesquisa?q=" + encodeURIComponent(jogador.nome));
+        var perfilConfirmado = Boolean(jogador.perfilExterno);
         var item = el("article", { classe: "jogador" }, [
+          jogador.imagem ? el("img", {
+            classe: "jogador__foto",
+            attrs: { src: jogador.imagem, alt: "Fotografia de " + jogador.nome, loading: "lazy", width: "114", height: "174" }
+          }) : null,
           el("h2", { texto: jogador.nome }),
-          jogador.nascimento ? el("p", { texto: "Nascimento: " + jogador.nascimento }) : null,
+          el("p", { texto: "Modalidade: " + (jogador.modalidade || dados.modalidade || "Por confirmar") }),
+          el("p", { texto: "Nacionalidade: " + (jogador.nacionalidade || dados.nacionalidade || "Por confirmar") }),
+          el("p", { texto: "Nascimento: " + (jogador.nascimento || "Por confirmar") }),
+          el("p", { texto: "Posição: " + (jogador.posicao || "Por confirmar") }),
           epocas.length ? el("ul", { classe: "jogador__epocas" }, epocas) : el("p", { texto: "Época(s): em investigação" }),
-          el("p", { classe: "estado", texto: jogador.estado })
+          el("p", { classe: "estado", texto: jogador.estado }),
+          el("p", {}, [el("a", {
+            texto: perfilConfirmado ? "Consultar ficha no ZeroZero →" : "Procurar este jogador no ZeroZero →",
+            attrs: { href: perfilZeroZero, target: "_blank", rel: "noopener noreferrer" }
+          })]),
+          el("p", { classe: "origem", texto: "Fonte do registo: " + (jogador.fontePerfil || dados.fonteBase || dados.fonte) })
         ]);
         if (jogador.fotografia) {
           item.appendChild(el("a", {
@@ -458,12 +472,82 @@
     botao.addEventListener("click", function () {
       var aberto = menu.classList.toggle("is-open");
       botao.setAttribute("aria-expanded", aberto ? "true" : "false");
+      botao.textContent = aberto ? "Fechar" : "Menu";
+      document.body.classList.toggle("menu-aberto", aberto);
+    });
+    document.addEventListener("keydown", function (evento) {
+      if (evento.key === "Escape" && menu.classList.contains("is-open")) {
+        menu.classList.remove("is-open");
+        botao.setAttribute("aria-expanded", "false");
+        botao.textContent = "Menu";
+        document.body.classList.remove("menu-aberto");
+        botao.focus();
+      }
+    });
+    menu.addEventListener("click", function (evento) {
+      if (evento.target.tagName === "A") {
+        menu.classList.remove("is-open");
+        botao.setAttribute("aria-expanded", "false");
+        botao.textContent = "Menu";
+        document.body.classList.remove("menu-aberto");
+      }
     });
   }
 
   function escreverAno() {
     var alvo = document.getElementById("ano-atual");
     if (alvo) { alvo.textContent = String(new Date().getFullYear()); }
+  }
+
+  function iniciarMural() {
+    var formulario = document.getElementById("mural-form");
+    var lista = document.getElementById("mural-mensagens");
+    if (!formulario || !lista) { return; }
+    var estado = document.getElementById("mural-estado");
+    var config = window.JOVALTO_GUESTBOOK || {};
+    if (!config.endpoint || config.endpoint.indexOf("SEU-PROJETO") !== -1) {
+      formulario.hidden = true;
+      lista.innerHTML = "";
+      lista.appendChild(el("div", { classe: "nota" }, [el("p", { texto: "O mural está a ser configurado e ficará disponível em breve." })]));
+      return;
+    }
+    formulario.hidden = false;
+    formulario.classList.add("is-ready");
+
+    function mostrarMensagens(itens) {
+      lista.textContent = "";
+      if (!itens.length) { lista.appendChild(el("p", { texto: "Ainda não existem mensagens. Seja o primeiro a contribuir." })); return; }
+      itens.forEach(function (item) {
+        var filhos = [
+          el("header", {}, [el("strong", { texto: item.nome }), el("time", { texto: new Date(item.criado_em).toLocaleDateString("pt-PT") })]),
+          el("p", { texto: item.mensagem })
+        ];
+        if (item.anexo_url) {
+          filhos.push(el("a", { classe: "mural-anexo", texto: "Consultar anexo →", attrs: { href: item.anexo_url, target: "_blank", rel: "noopener noreferrer" } }));
+        }
+        lista.appendChild(el("article", { classe: "mural-mensagem" }, filhos));
+      });
+    }
+
+    function carregar() {
+      fetch(config.endpoint, { headers: { apikey: config.anonKey || "" } })
+        .then(function (resposta) { if (!resposta.ok) { throw new Error(); } return resposta.json(); })
+        .then(mostrarMensagens)
+        .catch(function () { lista.textContent = "Não foi possível carregar o mural neste momento."; });
+    }
+
+    formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      var botao = formulario.querySelector("button[type=submit]");
+      var dados = new FormData(formulario);
+      botao.disabled = true; estado.textContent = "A publicar…";
+      fetch(config.endpoint, { method: "POST", headers: { apikey: config.anonKey || "" }, body: dados })
+        .then(function (resposta) { return resposta.json().then(function (corpo) { if (!resposta.ok) { throw new Error(corpo.error || "Não foi possível publicar."); } return corpo; }); })
+        .then(function () { formulario.reset(); estado.textContent = "Mensagem publicada."; carregar(); })
+        .catch(function (erro) { estado.textContent = erro.message; })
+        .then(function () { botao.disabled = false; });
+    });
+    carregar();
   }
 
   function iniciar() {
@@ -478,6 +562,7 @@
     renderRecintos();
     renderEpocas();
     iniciarNavegacao();
+    iniciarMural();
     escreverAno();
   }
 
