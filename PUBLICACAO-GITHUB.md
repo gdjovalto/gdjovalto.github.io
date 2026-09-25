@@ -1,5 +1,21 @@
 # Publicação no GitHub Pages
 
+## Regra de deployment
+
+O deployment deve partir sempre do repositório local e ser registado no Git:
+
+1. fazer as alterações dentro do repositório local `C:\Users\pedro\Desktop\Jovalto`;
+2. testar localmente e executar `website/tools/check-integrity.ps1`;
+3. confirmar os ficheiros alterados com `git status` e `git diff`;
+4. criar um commit no ramo `main`;
+5. enviar o commit com `git push origin main`;
+6. confirmar que o workflow **Publicar site no GitHub Pages** terminou com sucesso;
+7. verificar o conteúdo publicado em `https://gdjovalto.github.io/`.
+
+Alterar apenas ficheiros locais não atualiza o site. Da mesma forma, o deployment não deve
+ser feito a partir de ficheiros avulsos fora do repositório. O GitHub Pages publica a versão
+de `website/` existente no último commit enviado para `origin/main`.
+
 ## Endereço pretendido
 
 Para publicar em **https://gdjovalto.github.io/**, o GitHub exige:
