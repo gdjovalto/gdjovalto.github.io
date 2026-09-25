@@ -1,7 +1,7 @@
 /* Identidade pública e metadados internos de investigação. */
 window.JOVALTO = window.JOVALTO || {};
 window.JOVALTO.clube = {
-  nome: "Grupo Desportivo Jovalto", nomesComuns: ["GD Jovalto", "Jovalto", "GDJovalto"],
+  nome: "Grupo Desportivo Jovalto", nomesComuns: ["GD Jovalto", "G. D. Jovalto", "Jovalto", "GDJovalto"],
   fundacao: "01/01/1965", constituicaoLegal: "29/06/1987",
   modalidade: "Futebol de Veteranos", competicao: "Associação de Futebol de Lisboa (AFL)",
   cores: ["Vermelho", "Branco"], localidade: "Campo de Ourique, Lisboa",
