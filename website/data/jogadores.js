@@ -76,7 +76,7 @@ window.JOVALTO.jogadores = {
     "carlos-alberto-silva-pereira":["1950-02-01","Médio"],
     "vitor-antonio-peres-oliveira-rebelo":["1953-11-16","Médio"],
     "jose-miranda-silva":["1943-11-25","Médio"],
-    "joaquim-alvaro-sampaio-lourenco":["1945-11-24","Médio"],
+    "joaquim-alvaro-sampaio-lourenco":["1945-11-24","Médio","Portugal","../assets/img/jogadores/joaquim-alvaro-sampaio-lourenco.jpg"],
     "mario-paiva-alves":["1945-11-24","Médio"],
     "carlos-alberto-coelho-moreira":["1945-11-03","Médio"],
     "rogerio-fernando-silva-faroia":["1952-11-04","Médio"],
